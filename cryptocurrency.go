@@ -111,6 +111,7 @@ func (c *Client) GetCurrencyMap(
 	q.Set("listing_status", string(lstatus))
 	q.Add("start", start)
 	q.Add("limit", limit)
+	q.Add("sort", "cmc_rank")
 	if symbol != "" {
 		q.Add("symbol", symbol)
 	}
@@ -202,6 +203,7 @@ func (c *Client) GetCurrencyListingsLatestAll() (result []CurrencyListing, err e
 	var raw json.RawMessage
 	q := url.Values{}
 	q.Set("convert", "BTC,USD")
+	q.Add("start", "1")
 	q.Add("limit", "5000")
 	if raw, err = c.handleRequest(ltUriCurrencyListingsLatest, &q); err != nil {
 		return

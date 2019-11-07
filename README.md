@@ -22,7 +22,7 @@ const (
 
 func main() {
 	// cmcproapi client
-	cmc := cmcproapi.New(ApiKey)
+	cmc, _ := cmcproapi.New(ApiKey)
 
 	// get info about bitcoin
 	info, err := cmc.GetCurrencyInfoBySymbol("BTC")

@@ -28,7 +28,16 @@ func TestGetCurrencyInfo(t *testing.T) {
 
 func TestGetCurrencyListingsLatest(t *testing.T) {
 	cmc, err := NewTest()
-	_, err = cmc.GetCurrencyListingsLatestBySymbol("1", "50", "USD")
+	_, err = cmc.GetCurrencyListingsLatestById("1", "600", "2781")
+	if err != nil {
+		t.Error(err)
+		t.Fail()
+	}
+}
+
+func TestGetCurrencyListingsLatestAll(t *testing.T) {
+	cmc, err := NewTest()
+	_, err = cmc.GetCurrencyListingsLatestAll()
 	if err != nil {
 		t.Error(err)
 		t.Fail()
